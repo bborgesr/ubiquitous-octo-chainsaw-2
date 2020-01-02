@@ -26,14 +26,10 @@
     "cssnano": "4.1.10",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.11.2",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^14.1.0",
+    "eslint": "5.15.2",
     "eslint-loader": "2.1.2",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-react": "7.12.4",
     "fetch-mock": "7.3.1",
     "html-webpack-plugin": "3.2.0",
     "http-server": "0.9.0",
@@ -61,5 +57,39 @@
     "presets": [
       "babel-preset-react-app"
     ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "rules": {
+      "no-debugger": "off",
+      "no-console": "off",
+      "no-unused-vars": "warn",
+      "react/prop-types": "warn"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "root": true
   }
 }
