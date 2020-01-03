@@ -1,18 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as courseActions from "../../redux/actions/courseActions";
 
 class CoursesPage extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     course: {
-  //       title: ""
-  //     }
-  //   };
-
-  //   // this.handleChange = this.handleChange.bind(this);
-  // }
-
   state = {
     course: {
       title: ""
@@ -30,6 +20,10 @@ class CoursesPage extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     alert(this.state.course.title);
+
+    // dispatch is automatically passed in by connect when we omit
+    // the arg mapDispatchToProps
+    this.props.dispatch(courseActions.createCourse(this.state.course));
   };
 
   render() {
@@ -48,4 +42,14 @@ class CoursesPage extends React.Component {
   }
 }
 
-export default CoursesPage;
+function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses
+  };
+}
+
+// function mapDispatchToProps(actions) {
+
+// }
+
+export default connect(mapStateToProps /* , mapDispatchToProps */)(CoursesPage);
