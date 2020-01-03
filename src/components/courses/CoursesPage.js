@@ -19,11 +19,7 @@ class CoursesPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    alert(this.state.course.title);
-
-    // dispatch is automatically passed in by connect when we omit
-    // the arg mapDispatchToProps
-    this.props.dispatch(courseActions.createCourse(this.state.course));
+    this.props.createCourse(this.state.course);
   };
 
   render() {
@@ -51,8 +47,10 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-// function mapDispatchToProps(actions) {
+function mapDispatchToProps(dispatch) {
+  return {
+    createCourse: course => dispatch(courseActions.createCourse(course))
+  };
+}
 
-// }
-
-export default connect(mapStateToProps /* , mapDispatchToProps */)(CoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
